@@ -1,0 +1,45 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+-------------------------------------------------------------------------------
+--------------                       TABLES                        ------------
+-------------------------------------------------------------------------------
+-- CREATE RocketSystemProjectTemplate
+if NOT exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}RocketSystemProjectTemplate]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+
+CREATE TABLE {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (
+	[ItemId] [int] IDENTITY (1, 1) NOT NULL ,
+	[PortalId] [int] NULL CONSTRAINT [DF_RocketSystemProjectTemplate_PortalId]  DEFAULT ((-1)),
+	[ModuleId] [int] NULL CONSTRAINT [DF_RocketSystemProjectTemplate_ModuleId]  DEFAULT ((-1)),
+	[TypeCode] [nvarchar](50) NULL ,
+	[XMLData] [xml] NULL ,
+	[GUIDKey] [nvarchar](250) NULL ,
+	[ModifiedDate] [datetime] NULL ,
+	[TextData] [nvarchar](MAX) NULL ,
+	[XrefItemId] [int] NULL ,
+	[ParentItemId] [int] NULL ,
+	[Lang] [nvarchar] (50) NULL ,
+	[UserId] [int] NOT NULL CONSTRAINT [DF_RocketSystemProjectTemplate_UserId] DEFAULT ((-1)),
+	[SortOrder] [int] NULL CONSTRAINT [DF_RocketSystemProjectTemplate_SortOrder]  DEFAULT ((-1)),	
+	CONSTRAINT [PK_RocketSystemProjectTemplate] PRIMARY KEY  CLUSTERED 
+	(
+		[ItemId]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+
+-- Index RocketSystemProjectTemplate
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateXref ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  XrefItemId ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ]  
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateMod ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  ModuleId ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateParent ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  ParentItemId ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplatePortal ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  PortalId ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateType ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  TypeCode ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateUserId ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  UserId ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateLang ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  Lang ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateGuidKey ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  GuidKey ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+ CREATE NONCLUSTERED INDEX IX_RocketSystemProjectTemplateSortOrder ON {databaseOwner}[{objectQualifier}RocketSystemProjectTemplate] (  SortOrder ASC  )   WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  ) ON [PRIMARY ] 
+
+END
+
+GO
