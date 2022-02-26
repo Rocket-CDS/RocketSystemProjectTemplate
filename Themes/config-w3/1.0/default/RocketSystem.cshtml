@@ -22,7 +22,7 @@
 }
 
 <div id="a-setupbuttons" class="w3-bar" style="display:none;">
-    <button class="w3-button simplisity_click" s-cmd="portal_detail" s-fields='{"portalid":"@portalContent.PortalId","track":"false"}'>@ButtonIcon(ButtonTypes.back)</button>
+    <span class="w3-button simplisity_click" s-cmd="dashboard_get">@ButtonIcon(ButtonTypes.back)</span>
     <button class="w3-padding w3-button w3-theme-action simplisity_click" s-cmd="rocketsystem_save" s-list=".sqlorderbyproduct,.settingsdata,.linklist" s-post="#servicesettings" s-fields='{"systemkey":"@portalContent.SystemKey","portalid":"@portalContent.PortalId"}'>@ButtonText(ButtonTypes.save)</button>
     @if (portalData.Protocol != "")
     {
@@ -31,15 +31,19 @@
 </div>
 
 <div class="w3-row">
-    <div onclick="selectmenu('generaldata');" class="w3-col m2 w3-hover-light-grey w3-center">
-        <div class="a-generaldata mitem w3-bottombar w3-border-black w3-large w3-padding">
-            @ResourceKey("RCP.general")
-        </div>
-    </div>
-</div>
 
-<div id="servicesettings" class="w3-row w3-margin-top">
-    @RenderTemplate("RocketSystemGeneral.cshtml", systemAppTheme, Model, true)
+    <div class="w3-col m2 w3-padding">
+
+        <ul class="w3-ul">
+            <li onclick="selectsidemenu('sidemenugeneraldata');" class="a-sidemenugeneraldata w3-hover-theme w3-theme-l3 a-sidemenu">@ResourceKey("DNNrocket.general")</li>
+        </ul>
+
+    </div>
+
+    <div id="servicesettings" class="w3-col m10 w3-padding">
+        @RenderTemplate("RocketSystemGeneral.cshtml", systemAppTheme, Model, true)
+    </div>
+
 </div>
 
 
@@ -61,5 +65,12 @@
         $('#a-portalbuttons').hide();
         $('#a-setupbuttons').show();
     });
+    
+    function selectsidemenu(selector) {
+        $('.a-panelsidemenu').hide();
+        $('.a-sidemenu').removeClass('w3-theme-l3');
+        $('.a-' + selector).addClass('w3-theme-l3');
+        $('#' + selector).show();
+    }
 
 </script>
