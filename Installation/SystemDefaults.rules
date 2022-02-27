@@ -31,9 +31,12 @@
       <cmd>rocketsystem_login</cmd>
       <action>false</action>
     </command>
+
     
-
-
+    <command>
+      <cmd>rocketsystemprojecttemplate_adminpanel</cmd>
+      <action>true</action>
+    </command>
     <command>
       <cmd>rocketsystemprojecttemplate_admin</cmd>
       <action>true</action>

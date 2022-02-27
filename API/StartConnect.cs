@@ -55,6 +55,9 @@ namespace RocketSystemProjectTemplate.API
 
 
 
+                case "rocketsystemprojecttemplate_adminpanel":
+                    strOut = AdminPanel();
+                    break;
                 case "rocketsystemprojecttemplate_admin":
                     strOut = "rocketsystemprojecttemplate_admin";
                     break;
@@ -82,7 +85,9 @@ namespace RocketSystemProjectTemplate.API
                 if (portalContent.PortalId >= 0) portalContent.Save(_postInfo);
                 _portalContent = new PortalContentLimpet(portalId, _sessionParams.CultureCodeEdit); // reload portal data after save (for langauge change)
                 var razorTempl = _appThemeSystem.GetTemplate("RocketSystem.cshtml");
-                return RenderRazorUtils.RazorDetail(razorTempl, _portalContent, _passSettings, _sessionParams, true);
+                var pr = RenderRazorUtils.RazorProcessData(razorTempl, _portalContent, null, _passSettings, _sessionParams, true);
+                if (pr.StatusCode != "00") return pr.ErrorMsg;
+                return pr.RenderedText;
             }
             return "Invalid PortalId";
         }
@@ -92,9 +97,11 @@ namespace RocketSystemProjectTemplate.API
                 {
                     _portalContent = new PortalContentLimpet(_portalContent.PortalId, _sessionParams.CultureCodeEdit);
                     var razorTempl = _appThemeSystem.GetTemplate("RocketSystem.cshtml");
-                    return RenderRazorUtils.RazorDetail(razorTempl, _portalContent, _passSettings, _sessionParams, true);
+                    var pr = RenderRazorUtils.RazorProcessData(razorTempl, _portalContent, null, _passSettings, _sessionParams, true);
+                    if (pr.StatusCode != "00") return pr.ErrorMsg;
+                    return pr.RenderedText;
                 }
-                catch (Exception ex)
+            catch (Exception ex)
                 {
                     return ex.ToString();
                 }
@@ -145,7 +152,9 @@ namespace RocketSystemProjectTemplate.API
                         if (!_portalContent.Valid)
                         {
                             var razorTempl = _appThemeSystem.GetTemplate("InvalidSystem.cshtml");
-                            return RenderRazorUtils.RazorDetail(razorTempl, _portalContent, _passSettings, _sessionParams, true);
+                            var pr = RenderRazorUtils.RazorProcessData(razorTempl, _portalContent, null, _passSettings, _sessionParams, true);
+                            if (pr.StatusCode != "00") return pr.ErrorMsg;
+                            return pr.RenderedText;
                         }
                     }
                     return "";
@@ -160,7 +169,9 @@ namespace RocketSystemProjectTemplate.API
             try
             {
                 var razorTempl = _appThemeSystem.GetTemplate("AdminPanel.cshtml");
-                return RenderRazorUtils.RazorDetail(razorTempl, _portalContent, _passSettings, _sessionParams, true);
+                var pr = RenderRazorUtils.RazorProcessData(razorTempl, _portalContent, null, _passSettings, _sessionParams, true);
+                if (pr.StatusCode != "00") return pr.ErrorMsg;
+                return pr.RenderedText;
             }
             catch (Exception ex)
             {
@@ -176,7 +187,9 @@ namespace RocketSystemProjectTemplate.API
 
                 var portalAppThemeSystem = new AppThemeDNNrocketLimpet("rocketportal");
                 var razorTempl = portalAppThemeSystem.GetTemplate("Reload.cshtml");
-                return RenderRazorUtils.RazorDetail(razorTempl, null, _passSettings, _sessionParams, true);
+                var pr = RenderRazorUtils.RazorProcessData(razorTempl, _portalContent, null, _passSettings, _sessionParams, true);
+                if (pr.StatusCode != "00") return pr.ErrorMsg;
+                return pr.RenderedText;
             }
             catch (Exception ex)
             {

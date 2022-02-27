@@ -81,6 +81,34 @@
         </radio>
       </genxml>
 
+      <genxml>
+        <textbox>
+          <interfacekey>remote</interfacekey>
+          <namespaceclass>RocketSystemProjectTemplate.API.StartConnect</namespaceclass>
+          <assembly>RocketSystemProjectTemplate</assembly>
+          <interfaceicon></interfaceicon>
+          <defaultcommand></defaultcommand>
+          <relpath>/DesktopModules/DNNrocketModules/RocketSystemProjectTemplate</relpath>
+        </textbox>
+        <providertype></providertype>
+        <dropdownlist>
+          <group></group>
+        </dropdownlist>
+        <checkbox>
+          <onmenu>false</onmenu>
+          <active>true</active>
+        </checkbox>
+        <radio>
+          <securityrolesadministrators>1</securityrolesadministrators>
+          <securityrolesmanager>1</securityrolesmanager>
+          <securityroleseditor>1</securityroleseditor>
+          <securityrolesclienteditor>1</securityrolesclienteditor>
+          <securityrolesregisteredusers>1</securityrolesregisteredusers>
+          <securityrolessubscribers>1</securityrolessubscribers>
+          <securityrolesall>1</securityrolesall>
+        </radio>
+      </genxml>
+
 
     </interfacedata>
   </genxml>
