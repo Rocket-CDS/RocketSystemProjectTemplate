@@ -13,6 +13,10 @@ The system uses the RocketPortal>RocketAdmin skin on the admin page which will c
 
 DO NOT FORGET:  Add any new commands into the "SystemDefaults.rules" file.
 
+##### Menu
+The side menu shows interfaces.  You need to create (Copy/Paste) an interface WITH a "default command", so the security works correctly.  Ensure you have added the command to the "SesysmDefaults.rules" file. 
+
+
 The current project code uses DNNpacker.
 
 https://github.com/leedavi/DNNpackager
