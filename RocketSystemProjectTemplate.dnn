@@ -42,42 +42,26 @@
         </component>
         
         <component type="ResourceFile">
-					<resourceFiles>
-						<basePath>DesktopModules\DNNrocketModules\RocketSystemProjectTemplate</basePath>
-						<resourceFile>
-							<name>Resource.zip</name>
-						</resourceFile>
-					</resourceFiles>
-				</component>
-
-        <component type="Skin">
-          <skinFiles>
-            <basePath>Portals\_default\Skins\rocketsystemprojecttemplate</basePath>
-            <skinName>rocketsystemprojecttemplate</skinName>
-            <skinFile>
-              <path></path>
-              <name>rocketsystemprojecttemplate.ascx</name>
-            </skinFile>
-            <skinFile>
-              <path></path>
-              <name>rocketsystemprojecttemplate.xml</name>
-            </skinFile>
-          </skinFiles>
-        </component>
+		<resourceFiles>
+			<basePath>DesktopModules\DNNrocketModules\RocketSystemProjectTemplate</basePath>
+			<resourceFile>
+				<name>Resource.zip</name>
+			</resourceFile>
+		</resourceFiles>
+	</component>
 
         <component type="Assembly">
-					<assemblies>
-						<assembly>
-							<path>bin</path>
-							<name>RocketSystemProjectTemplate.dll</name>
-							<sourceFileName>RocketSystemProjectTemplate.dll</sourceFileName>
-						</assembly>
-                                    
-          </assemblies>
-				</component>
+		<assemblies>
+			<assembly>
+				<path>bin</path>
+				<name>RocketSystemProjectTemplate.dll</name>
+				<sourceFileName>RocketSystemProjectTemplate.dll</sourceFileName>
+			</assembly>
+		</assemblies>
+	</component>
 
       </components>
-		</package>
+	</package>
 
   </packages>
 </dotnetnuke>
