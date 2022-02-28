@@ -7,6 +7,13 @@
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketSystemProjectTemplate/App_LocalResources")
 
+@{
+    var systemData = new SystemLimpet("rocketsystemprojecttemplate");
+    var appThemeSystem = new AppThemeSystemLimpet(systemData.SystemKey);
+}
+
+@RenderTemplate("AdminPanelHeader.cshtml", appThemeSystem, Model)
+
 <!-- Sidebar/Menu -->
 <div id="sidebarplaceholder"></div>
 
@@ -27,7 +34,7 @@
         </div>
     </div>
 </div>
-     
+
 <script>
 
     $(document).ready(function () {

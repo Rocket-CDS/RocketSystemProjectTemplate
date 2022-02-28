@@ -38,6 +38,10 @@
       <action>true</action>
     </command>
     <command>
+      <cmd>rocketsystemprojecttemplate_adminpanelheader</cmd>
+      <action>true</action>
+    </command>
+    <command>
       <cmd>rocketsystemprojecttemplate_admin</cmd>
       <action>true</action>
     </command>    
