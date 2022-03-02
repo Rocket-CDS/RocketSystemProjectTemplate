@@ -3,15 +3,15 @@
 @using Simplisity;
 @using DNNrocketAPI.Components;
 
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/AppThemes/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketCatalog/App_LocalResources/")
-
 @{
     var portalContent = (PortalContentLimpet)Model.List.First();
     var info = portalContent.Info;
     var systemData = new SystemLimpet("rocketsystemprojecttemplate");
 }
+
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/AppThemes/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/" + systemData.SystemKey + "/App_LocalResources/")
 
 <div id="sidemenugeneraldata" class="w3-container a-panelsidemenu">
 
