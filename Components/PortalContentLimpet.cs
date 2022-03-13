@@ -105,10 +105,8 @@ namespace RocketSystemProjectTemplate.Components
         public string RemoteBase64Params()
         {
             var portalData = new PortalLimpet(PortalId);
-            var defaultcmd = "rocketsystemprojecttemplate_public";
             var remoteParams = new RemoteParams(SystemKey);
             remoteParams.EngineURL = portalData.EngineUrlWithProtocol;
-            remoteParams.RemoteCmd = defaultcmd;
             remoteParams.SecurityKey = portalData.SecurityKey;
             return remoteParams.RecordItemBase64;
         }
