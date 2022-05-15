@@ -21,4 +21,4 @@ The current project code uses DNNpacker.
 
 https://github.com/leedavi/DNNpackager
 
-This can be removed form the Build Events, if it is not required.
+This can be removed from the Build Events, if it is not required.
