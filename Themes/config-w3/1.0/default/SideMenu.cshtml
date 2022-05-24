@@ -16,7 +16,8 @@
 }
 
 @functions
-{ public IEncodedString GetInterfaceLink(SystemLimpet systemData, RocketInterface rinterface, bool submenu)
+{
+    public IEncodedString GetInterfaceLink(SystemLimpet systemData, RocketInterface rinterface, bool submenu)
     {
         var rtn = "";
         if (rinterface.IsOnMenu)
@@ -27,20 +28,25 @@
                 var interfaceName = DNNrocketUtils.GetResourceString(systemData.SystemRelPath + "/App_LocalResources", "SideMenu." + rinterface.InterfaceKey, "Text", DNNrocketUtils.GetCurrentCulture());
                 if (interfaceName == "")
                 {
+                    interfaceName = DNNrocketUtils.GetResourceString(rinterface.TemplateRelPath + "/App_LocalResources", "SideMenu." + rinterface.InterfaceKey, "Text", DNNrocketUtils.GetCurrentCulture());
+                }
+                if (interfaceName == "")
+                {
                     interfaceName = rinterface.InterfaceKey;
                 }
                 if (submenu)
                 {
-                    rtn = "<div class='w3-bar-item w3-button w3-margin-left  simplisity_click' s-cmd='" + rinterface.DefaultCommand + "' s-fields='{\"track\":\"true\"}'><strong>" + interfaceName + "</strong></div>";
+                    rtn = "<div class='w3-bar-item w3-button w3-margin-left  simplisity_click' s-cmd='" + rinterface.DefaultCommand + "' s-fields='{\"track\":\"true\",\"systemkey\":\"RocketSystemProjectTemplate\"}'><strong>" + interfaceName + "</strong></div>";
                 }
                 else
                 {
-                    rtn = "<div class='w3-bar-item w3-button w3-padding-16 simplisity_click' s-cmd='" + rinterface.DefaultCommand + "'  s-fields='{\"track\":\"true\"}'><strong><span class='material-icons'>" + rinterface.InterfaceIcon + "</span>&nbsp;" + interfaceName + "</strong></div>";
+                    rtn = "<div class='w3-bar-item w3-button w3-padding-16 simplisity_click' s-cmd='" + rinterface.DefaultCommand + "'  s-fields='{\"track\":\"true\",\"systemkey\":\"RocketSystemProjectTemplate\"}'><strong><span class='material-icons'>" + rinterface.InterfaceIcon + "</span>&nbsp;" + interfaceName + "</strong></div>";
                 }
             }
         }
         return new RawString(rtn);
-    } }
+    } 
+}
 
 <nav class="w3-sidebar w3-collapse w3-card w3-theme-l4" style="width:280px;" id="mySidebar">
     <div class="w3-display-container w3-large w3-theme-l3 w3-border-bottom " style="height:48px;">
