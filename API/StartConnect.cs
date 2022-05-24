@@ -53,6 +53,9 @@ namespace RocketSystemProjectTemplate.API
                 case "rocketsystem_adminpanel":
                     strOut = AdminPanel();
                     break;
+                case "rocketsystem_adminpanelheader":
+                    strOut = AdminPanelHeader();
+                    break;
                 case "rocketsystem_save":
                     strOut = RocketSystemSave();
                     break;
@@ -70,10 +73,8 @@ namespace RocketSystemProjectTemplate.API
                     strOut = AdminPanelHeader();
                     break;
                 case "rocketsystemprojecttemplate_admin":
-                    strOut = "rocketsystemprojecttemplate_admin";
+                    strOut = GetDashboard();
                     break;
-
-
 
 
                 case "invalidcommand":
@@ -158,13 +159,20 @@ namespace RocketSystemProjectTemplate.API
             if (pr.StatusCode != "00") return pr.ErrorMsg;
             return pr.RenderedText;
         }
+        private string GetDashboard()
+        {
+            var razorTempl = GetSystemTemplate("Dashboard.cshtml");
+            var pr = RenderRazorUtils.RazorProcessData(razorTempl, _portalContent, _dataObjects, _passSettings, _sessionParams, true);
+            if (pr.StatusCode != "00") return pr.ErrorMsg;
+            return pr.RenderedText;
+        }
         public string InitCmd(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
         {
             _postInfo = postInfo;
             _paramInfo = paramInfo;
             _systemData = new SystemLimpet(systemInfo.GetXmlProperty("genxml/systemkey"));
             _appThemeSystem = new AppThemeSystemLimpet(_systemData.SystemKey);
-            _appThemeContent = new AppThemeSystemLimpet("rocketcontent");
+            _appThemeContent = new AppThemeSystemLimpet("rocketsystemprojecttemplate");
             _rocketInterface = new RocketInterface(interfaceInfo);
             _sessionParams = new SessionParams(_paramInfo);
             _userParams = new UserParams(_sessionParams.BrowserSessionId);
