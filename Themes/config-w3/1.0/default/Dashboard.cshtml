@@ -7,9 +7,9 @@
 
 @{
     var portalContent = (PortalContentLimpet)Model.List.First();
-    var systemData = new SystemLimpet("rocketcontent");
-    var appThemeSystem = new AppThemeSystemLimpet(systemData.SystemKey);
-    var portalData = new PortalLimpet(PortalUtils.GetCurrentPortalId());
+    var systemData = (SystemLimpet)Model.GetDataObject("systemdata");
+    var appThemeSystem = (AppThemeSystemLimpet)Model.GetDataObject("appthemesystem");
+    var portalData = (PortalLimpet)Model.GetDataObject("portaldata");
 }
 
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")

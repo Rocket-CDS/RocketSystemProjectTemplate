@@ -20,7 +20,6 @@ namespace RocketSystemProjectTemplate.API
         private UserParams _userParams;
         private AppThemeLimpet _appTheme;
         private AppThemeSystemLimpet _appThemeSystem;
-        private AppThemeSystemLimpet _appThemeContent;
         private PortalContentLimpet _portalContent;
         private PortalLimpet _portalData;
         private RemoteModule _remoteModule;
@@ -91,7 +90,6 @@ namespace RocketSystemProjectTemplate.API
         {
             var razorTempl = _appTheme.GetTemplate(templateName);
             if (razorTempl == "") razorTempl = _appThemeSystem.GetTemplate(templateName);
-            if (razorTempl == "") razorTempl = _appThemeContent.GetTemplate(templateName);
             return razorTempl;
         }
         private string RocketSystemSave()
@@ -172,7 +170,6 @@ namespace RocketSystemProjectTemplate.API
             _paramInfo = paramInfo;
             _systemData = new SystemLimpet(systemInfo.GetXmlProperty("genxml/systemkey"));
             _appThemeSystem = new AppThemeSystemLimpet(_systemData.SystemKey);
-            _appThemeContent = new AppThemeSystemLimpet("rocketsystemprojecttemplate");
             _rocketInterface = new RocketInterface(interfaceInfo);
             _sessionParams = new SessionParams(_paramInfo);
             _userParams = new UserParams(_sessionParams.BrowserSessionId);
@@ -220,7 +217,6 @@ namespace RocketSystemProjectTemplate.API
             _dataObjects.Add("remotemodule", _remoteModule);
             _dataObjects.Add("apptheme", _appTheme);
             _dataObjects.Add("appthemesystem", _appThemeSystem);
-            _dataObjects.Add("appthemecontent", _appThemeContent);
             _dataObjects.Add("portalcontent", _portalContent);
             _dataObjects.Add("portaldata", _portalData);
             _dataObjects.Add("securitydata", securityData);
