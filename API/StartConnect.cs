@@ -25,9 +25,9 @@ namespace RocketSystemProjectTemplate.API
         private RemoteModule _remoteModule;
         private string _dataRef;
         private string _moduleRef;
-        private string _org;
+        private string _projectName;
         private Dictionary<string, object> _dataObjects;
-        private OrganisationLimpet _orgData;
+        private AppThemeProjectLimpet _appThemeProjectData;
 
         public override Dictionary<string, object> ProcessCommand(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
         {
@@ -174,7 +174,7 @@ namespace RocketSystemProjectTemplate.API
             _sessionParams = new SessionParams(_paramInfo);
             _userParams = new UserParams(_sessionParams.BrowserSessionId);
             _passSettings = new Dictionary<string, string>();
-            _orgData = new OrganisationLimpet();
+            _appThemeProjectData = new AppThemeProjectLimpet();
             _moduleRef = _paramInfo.GetXmlProperty("genxml/hidden/moduleref");
             if (_moduleRef == "") _moduleRef = _paramInfo.GetXmlProperty("genxml/remote/moduleref");
 
@@ -206,10 +206,10 @@ namespace RocketSystemProjectTemplate.API
                 _dataRef = _paramInfo.GetXmlProperty("genxml/hidden/dataref");
                 if (_dataRef == "") _dataRef = _paramInfo.GetXmlProperty("genxml/remote/dataref");
             }
-            _org = _remoteModule.Organisation;
-            if (_org == "") _org = _orgData.DefaultOrg();
+            _projectName = _remoteModule.ProjectName;
+            if (_projectName == "") _projectName = _appThemeProjectData.DefaultProjectName();
 
-            _appTheme = new AppThemeLimpet(_portalContent.PortalId, _remoteModule.AppThemeViewFolder, _remoteModule.AppThemeViewVersion, _org);
+            _appTheme = new AppThemeLimpet(_portalContent.PortalId, _remoteModule.AppThemeViewFolder, _remoteModule.AppThemeViewVersion, _projectName);
 
             var securityData = new SecurityLimpet(_portalContent.PortalId, _systemData.SystemKey, _rocketInterface, -1, -1);
 
