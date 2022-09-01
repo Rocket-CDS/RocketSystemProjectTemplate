@@ -13,6 +13,11 @@ The system uses the RocketPortal>RocketAdmin skin on the admin page which will c
 
 DO NOT FORGET:  Add any new commands into the "SystemDefaults.rules" file.
 
+#### Installation
+
+The first step after a successful build is to install the installation package.  This can be found in the "\Installation" folder after the project has been compiled in release mode.  
+The install zip can be installed in the test system by selecting "CMS Admin" in the top left mennu and then select "extensions".
+
 ##### Menu
 The side menu shows interfaces.  You need to create (Copy/Paste) an interface WITH a "default command", so the security works correctly.  Ensure you have added the command to the "SesysmDefaults.rules" file. 
 
