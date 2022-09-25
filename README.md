@@ -23,7 +23,7 @@ After Installation the system will be listed on all Web Services.
 
 
 ##### Menu
-The side menu shows interfaces.  You need to create (Copy/Paste) an interface WITH a "default command", so the security works correctly.  Ensure you have added the command to the "SesysmDefaults.rules" file. 
+The side menu shows interfaces.  if you need another interface you need to create (Copy/Paste) an interface WITH a "default command".  Ensure you have added the command to the "SesysmDefaults.rules" file. 
 
 
 The current project code uses DNNpacker.
