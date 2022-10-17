@@ -30,7 +30,14 @@ namespace RocketSystemProjectTemplate.Components
             Record = (SimplisityRecord)CacheUtils.GetCache(_cacheKey);
             if (Record == null)
             {
-                Record = _objCtrl.GetRecordByType(portalId, -1, EntityTypeCode, "", "", _tableName);
+                try
+                {
+                    Record = _objCtrl.GetRecordByType(portalId, -1, EntityTypeCode, "", "", _tableName);
+                }
+                catch (global::System.Exception)
+                {
+                    // Ignore, the table may not exists for development systems.
+                }
                 if (Record == null || Record.ItemID <= 0)
                 {
                     Record = new SimplisityInfo();
