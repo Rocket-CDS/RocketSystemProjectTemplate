@@ -117,6 +117,7 @@ namespace RocketSystemProjectTemplate.API
             if (newportalId > 0)
             {
                 _portalContent = new PortalContentLimpet(newportalId, _sessionParams.CultureCodeEdit);
+                _portalContent.Active = true;
                 _portalContent.Validate();
                 _portalContent.Update();
             }
@@ -169,7 +170,6 @@ namespace RocketSystemProjectTemplate.API
             _postInfo = postInfo;
             _paramInfo = paramInfo;
             _systemData = new SystemLimpet(systemInfo.GetXmlProperty("genxml/systemkey"));
-            _appThemeSystem = new AppThemeSystemLimpet(_systemData.SystemKey);
             _rocketInterface = new RocketInterface(interfaceInfo);
             _sessionParams = new SessionParams(_paramInfo);
             _userParams = new UserParams(_sessionParams.BrowserSessionId);
@@ -198,6 +198,7 @@ namespace RocketSystemProjectTemplate.API
                 if (!_portalContent.Active) return "";
             }
             _portalData = new PortalLimpet(_portalContent.PortalId);
+            _appThemeSystem = new AppThemeSystemLimpet(_portalContent.PortalId, _systemData.SystemKey);
             _dataRef = _remoteModule.DataRef;
 
             if (_dataRef == "")
