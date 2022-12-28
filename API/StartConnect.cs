@@ -99,14 +99,9 @@ namespace RocketSystemProjectTemplate.API
             DNNrocketUtils.SetEditCulture(_sessionParams.CultureCodeEdit);
 
             _dataObject = new DataObjectLimpet(portalid, _sessionParams.ModuleRef, _sessionParams);
+            if (paramCmd.StartsWith("rocketsystem_") && UserUtils.IsSuperUser()) return paramCmd;
             if (_dataObject.PortalContent.PortalId != 0 && !_dataObject.PortalContent.Active) return "";
             if (paramCmd.StartsWith("remote_public")) return paramCmd;
-
-            if (!_dataObject.ModuleSettings.HasAppThemeAdmin) // Check if we have an AppTheme
-            {
-                if (paramCmd.StartsWith("rocketcontent_") || paramCmd.StartsWith("rocketsystem_")) return paramCmd;
-                return "rocketcontent_settings";
-            }
 
             if (paramCmd.StartsWith("remote_"))
             {

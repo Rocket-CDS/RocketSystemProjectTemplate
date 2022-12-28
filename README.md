@@ -15,6 +15,7 @@ Download zip from GitHUb.  Unzip into the /DesktopModules/\<DevelopmentGroupFold
 4. Rename Solution files
 5. Rename Resx File.
 6. Rename DNN manifest.
+7. Rename render class "/Render/RocketSystemProjectTemplateTokens.cs"  
 
 The system uses the RocketPortal>RocketAdmin skin on the admin page which will call the AdminPanel.  
 
