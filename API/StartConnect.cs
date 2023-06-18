@@ -7,10 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using DNNrocketAPI.Interfaces;
 
 namespace RocketSystemProjectTemplate.API
 {
-    public partial class StartConnect : DNNrocketAPI.APInterface
+    public partial class StartConnect : IProcessCommand
     {
         private SimplisityInfo _postInfo;
         private SimplisityInfo _paramInfo;
@@ -21,7 +22,7 @@ namespace RocketSystemProjectTemplate.API
         private int _moduleId;
         private int _tabId;
 
-        public override Dictionary<string, object> ProcessCommand(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
+        public Dictionary<string, object> ProcessCommand(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
         {
             var strOut = ""; // return nothing if not matching commands.
             var storeParamCmd = paramCmd;
